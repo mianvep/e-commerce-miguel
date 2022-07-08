@@ -1,3 +1,4 @@
+/* eslint-disable n/handle-callback-err */
 import axios from 'axios';
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
@@ -19,7 +20,6 @@ const Form = () => {
 				localStorage.setItem('token', res.data.data.token);
 				navigate('/');
 			})
-			// eslint-disable-next-line n/handle-callback-err
 			.catch(err => {
 				localStorage.removeItem('token');
 				setIsErrorLogin(true);
@@ -37,13 +37,13 @@ const Form = () => {
 		<form onSubmit={handleSubmit(submit)} className='login__form'>
 			<ul className='login__test'>
 				<li className='flex-login'>
-					<b className='login-b'>Email: </b>mason@gmail.com
+					<b className='login-b'>Email: </b>veramig8888@gmail.com
 				</li>
 				<li className='flex-login'>
-					<b className='login-b'>Password: </b>mason1234
+					<b className='login-b'>Password: </b>password1234
 				</li>
 			</ul>
-			<h2 className='login__title'>Enter your information</h2>
+			<h2 className='login__title'>Ingresa tus datos</h2>
 			<ul className='login__list'>
 				<li className='login__item'>
 					<label htmlFor='login-email' className='login__label'>

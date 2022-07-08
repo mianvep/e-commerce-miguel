@@ -1,12 +1,36 @@
+/* eslint-disable react/prop-types */
+import axios from 'axios';
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getAllProductsCart } from '../../store/slices/cart.slice';
+import getConfig from '../../utils/getConfig';
 
-// eslint-disable-next-line react/prop-types
 const ProductCard = ({ product }) => {
 	const navigate = useNavigate();
 
 	const goToProductId = () => navigate(`/product/${product.id}`);
+
+	const dispatch = useDispatch();
+
+	const addCartProduct = e => {
+		e.stopPropagation();
+		const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart';
+
+		const objProduct = {
+			id: product.id,
+			quantity: 1,
+		};
+
+		axios
+			.post(URL, objProduct, getConfig())
+			.then(res => {
+				console.log(res.data);
+				dispatch(getAllProductsCart());
+			})
+			.catch(err => console.log(err.data));
+	};
 
 	return (
 		<article onClick={goToProductId} className='card-product'>
@@ -28,7 +52,7 @@ const ProductCard = ({ product }) => {
 					<h3 className='card-product__price-label'>Price</h3>
 					<p className='card-product__price-number'>$ {product.price}</p>
 				</div>
-				<button className='card-product__btn'>
+				<button onClick={addCartProduct} className='card-product__btn'>
 					<i className='fa-solid fa-cart-plus'></i>
 				</button>
 			</div>

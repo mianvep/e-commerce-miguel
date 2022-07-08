@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -11,20 +12,27 @@ import PurchasesScreen from './components/purchases/PurchasesScreen';
 import FooterScreen from './components/shared/FooterScreen';
 import HeaderScreen from './components/shared/HeaderScreen';
 import { getAllproducts } from './store/slices/products.slice';
+// eslint-disable-next-line no-unused-vars
 import getConfig from './utils/getConfig';
 
 function App() {
-	useEffect(() => {
-		const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/purchases';
-		const obj = {
-			street: 'Green St. 1456',
-			colony: 'Southwest',
-			zipCode: 123456,
-			city: 'USA',
-			references: 'Some references',
-		};
-		axios.get(URL, getConfig()).then(res => console.log(res.data));
-	}, []);
+	// useEffect(() => {
+	// 	const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users';
+
+	// 	const newUser = {
+	// 		firstName: 'Miguel',
+	// 		lastName: 'Vera',
+	// 		email: 'veramig8888@gmail.com',
+	// 		password: 'password1234',
+	// 		phone: '1234567891',
+	// 		role: 'admin',
+	// 	};
+
+	// 	axios
+	// 		.post(URL, newUser)
+	// 		.then(res => console.log(res.data))
+	// 		.catch(err => console.log(err.data));
+	// }, []);
 
 	const dispatch = useDispatch();
 
