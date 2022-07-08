@@ -3,7 +3,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ProductCard from '../Home/ProductCard';
+import ProductCard from '../home/ProductCard';
 
 const SimilarProducts = ({ product }) => {
 	const [filterProducts, setFilterProducts] = useState();
